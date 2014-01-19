@@ -1,0 +1,12 @@
+Flask==0.10.1
+Flask-Script==0.6.6
+Jinja2==2.7.2
+MarkupSafe==0.18
+PyYAML==3.10
+Werkzeug==0.9.4
+binaryornot==0.2.0
+gevent==1.0
+greenlet==0.4.2
+gunicorn==18.0
+itsdangerous==0.23
+wsgiref==0.1.2

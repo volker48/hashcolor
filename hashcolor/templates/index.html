@@ -10,8 +10,6 @@
   <link rel="stylesheet"
         href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
-  <link rel="stylesheet"
         href="{{ url_for('static', filename='css/main.css') }}">
   {% if hash_color %}
     <style>
@@ -33,6 +31,7 @@
     <h1>HashColor</h1>
 
     <p>HashColor makes it simple to generate a unique color from a string.</p>
+    <p>This is a unique color generated from your IP address.</p>
 
   </div>
 </div>
@@ -41,21 +40,27 @@
   {% block content %}
     <!-- Example row of columns -->
     <div class="row" id="form-row">
-      <div class="col-lg-4">
+      <div class="col-md-6">
         <h2>Try it</h2>
-        <form id="hash_form">
-          <label>Type your text here
-            <input type="text" name="text_to_hash">
-          </label>
-          <button class="btn btn-primary" type="submit">Do it</button>
+        <form role="form" id="hash_form">
+          <div class="form-group">
+            <label for="hash_text">Type your text here</label>
+            <input class="form-control input-lg" type="text" id="hash_text" placeholder="Type here...">
+          </div>
+          <button class="btn btn-default" type="submit">Do it</button>
         </form>
+      </div>
+      <div class="col-md-4">
         <div class="swatch"></div>
         <div class="hexcolor">{% if hash_color %} #{{hash_color}}{% endif %}</div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-md-10">
         <h2>API</h2>
+        <p>If you would like to access HashColor programatically simple make
+        a GET request http://colorhash.com/yourstring. The endpoint returns json
+        {"hashcolor": "yourstring"}</p>
       </div>
     </div>
   {% endblock %}
