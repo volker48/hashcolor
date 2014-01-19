@@ -6,9 +6,8 @@ def _and_with_padding(x, mask):
         ret = '0' + ret
     return ret
 
-def string_to_color(string):
+def string_to_color(string, mask=0xFE):
     x = int(sha1(string).hexdigest()[:6], 16)
-    r, remainder = divmod(x, 256)
-    g, remainder = divmod(remainder, 256)
-    b, remainder = divmod(remainder, 256)
-    return r + g + b
+    remainder, b = divmod(x, 256)
+    r, g = divmod(remainder, 256)
+    return ''.join(_and_with_padding(color, mask) for color in (r, g, b))
